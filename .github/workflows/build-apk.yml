@@ -38,8 +38,10 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install buildozer cython==0.29.34
 
-      - name: Build APK
-        run: buildozer -v android debug
+            - name: Build APK
+        run: |
+          set +o pipefail
+          yes | buildozer -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
